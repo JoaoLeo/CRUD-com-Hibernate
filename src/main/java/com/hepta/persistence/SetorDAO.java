@@ -14,23 +14,23 @@ public class SetorDAO {
 			db.getTransaction().begin();
 			db.persist(setor);
 			db.getTransaction().commit();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			db.getTransaction().rollback();
 			throw new Exception(e);
 		} finally {
 			db.close();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Setor> getAll() throws Exception{ 
+	public List<Setor> getAll() throws Exception {
 		EntityManager db = HibernateUtil.getEntityManager();
 		List<Setor> result = new ArrayList<Setor>();
 		try {
 			db.getTransaction().begin();
 			Query selectSQL = db.createQuery("FROM Setor");
 			result = selectSQL.getResultList();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			db.getTransaction().rollback();
 			throw new Exception(e);
 		} finally {
@@ -38,8 +38,8 @@ public class SetorDAO {
 		}
 		return result;
 	}
-	
-	public Setor update(Setor setor) throws Exception{
+
+	public Setor update(Setor setor) throws Exception {
 		EntityManager db = HibernateUtil.getEntityManager();
 		Setor setorAtualizado = null;
 		try {
@@ -54,13 +54,13 @@ public class SetorDAO {
 		}
 		return setorAtualizado;
 	}
-	
+
 	public Setor find(Integer id) throws Exception {
 		EntityManager db = HibernateUtil.getEntityManager();
 		Setor setor = null;
 		try {
 			setor = db.find(Setor.class, id);
-			
+
 		} catch (Exception e) {
 			db.getTransaction().rollback();
 			throw new Exception(e);
@@ -68,18 +68,18 @@ public class SetorDAO {
 			db.close();
 		}
 		return setor;
-		
+
 	}
-	
-	public void delete(Integer id) throws Exception{
+
+	public void delete(Integer id) throws Exception {
 		EntityManager db = HibernateUtil.getEntityManager();
 		try {
 			db.getTransaction().begin();
 			Setor setor = db.find(Setor.class, id);
 			db.remove(setor);
 			db.getTransaction().commit();
-		}catch (Exception e) {
-			db.getTransaction().rollback();		
+		} catch (Exception e) {
+			db.getTransaction().rollback();
 			throw new Exception(e);
 		} finally {
 			db.close();

@@ -1,10 +1,11 @@
-package com.hepta.persistence;
+package com.hepta.persistence.test;
 
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import com.hepta.entity.*;
+import com.hepta.persistence.FuncionarioDAO;
 
 public class FuncionarioDAOTest {
 	private static Funcionario funcionario;
@@ -84,10 +85,10 @@ public class FuncionarioDAOTest {
 		}
 
 	}
-	
-	@Test 
-	void deleteTest(){
-		try{
+
+	@Test
+	void deleteTest() {
+		try {
 			dao.delete(4);
 		} catch (Exception e) {
 			System.out.println("Erro ao excluir funcionario, erro: " + e);

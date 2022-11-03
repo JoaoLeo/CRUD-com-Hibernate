@@ -29,11 +29,11 @@ public class Funcionario implements Serializable {
 
 	@Column(name = "IDADE")
 	private Integer idade;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_SETOR")
 	private Setor setor;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -49,6 +49,7 @@ public class Funcionario implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public Double getSalario() {
 		return salario;
 	}
